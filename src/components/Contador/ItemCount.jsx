@@ -1,7 +1,19 @@
-import { useState } from "react"
+import { useEffect , useState } from "react"
+// import getProducts from "../Products/Products";
 import './counter.css'
-const Contador = () => {
+const Contador = (producto) => {
     const [contador, setContador] = useState(0);
+
+//     const[singleStock, setSingleStock]= useState([])
+
+//     useEffect(() =>{
+//     getProducts
+//     .then((resp)=> setSingleStock(resp))
+//     .catch((err) => console.log(err))
+// }, [])
+
+    // const stock = singleStock.map(id => (id.stock))
+
     const StockTotal = 10;
 
     const Sumar = () => {
@@ -16,7 +28,8 @@ const Contador = () => {
 
     return(
         <>
-        <span> Stock: {StockTotal}</span>
+        <span> Stock de un producto Hardcodeado: {StockTotal}</span>
+        {/* <span>{stock}</span> */}
             <div>
                 <button onClick={Restar}>-</button>
                 <span>{'  ' +contador+'  '}</span>

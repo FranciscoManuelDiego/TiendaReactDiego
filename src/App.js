@@ -1,18 +1,29 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import NavBar from './components/Navbar/Navbar';
-import EjemploGreeting from './components/ItemList/ItemListContainer';
-import Contador from './components/Contador/ItemCount';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailCointainer/ItemDetailContainer';
+import Cart from './components/CartWidget';
+import { BrowserRouter, Routes , Route } from 'react-router-dom';
+
+
 function App() {
   return (
     <>
+    <BrowserRouter>
     <NavBar></NavBar>
-    <EjemploGreeting Greeting="¡Bienvenido a mi tienda de Mates!"></EjemploGreeting>
-    <div className="App">
-      <header className="App-header">
-      <Contador></Contador>
-      </header>
-    </div>
+      <Routes>
+        <Route className="App-header" path="/" element={<ItemListContainer/>}></Route>
+        <Route path="/categoria/:categoria" element={<ItemListContainer/>}></Route>
+        <Route path="/cart" element={<Cart/>}></Route>
+        <Route path='/Item/:id' element={<ItemDetailContainer/>}></Route>
+      </Routes>
+    </BrowserRouter>
+    {/* <div className="App">
+      <header className="App-header"> */}
+      {/* <ItemListContainer></ItemListContainer> */}
+      {/* </header>
+    </div> */}
     </>
   );
 }

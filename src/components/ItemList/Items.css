@@ -1,0 +1,11 @@
+.Items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+ul {
+    background-color: #282c34;
+    text-align: center;
+}

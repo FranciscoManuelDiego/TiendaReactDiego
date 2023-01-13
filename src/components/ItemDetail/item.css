@@ -1,0 +1,16 @@
+.ItemRow {
+        display: flex;
+        background-color: #282c34;
+        text-align: center;
+        justify-content: center;
+}
+
+.Item {
+    margin: 2%;
+    color: black;
+}
+
+.Item li {
+    text-decoration: none;
+    list-style-type: none;
+}
