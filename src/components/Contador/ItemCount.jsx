@@ -1,41 +1,26 @@
-import { useEffect , useState } from "react"
+import {  useState } from "react"
+import Button from 'react-bootstrap/Button';
 // import getProducts from "../Products/Products";
 import './counter.css'
-const Contador = (producto) => {
-    const [contador, setContador] = useState(0);
-
-//     const[singleStock, setSingleStock]= useState([])
-
-//     useEffect(() =>{
-//     getProducts
-//     .then((resp)=> setSingleStock(resp))
-//     .catch((err) => console.log(err))
-// }, [])
-
-    // const stock = singleStock.map(id => (id.stock))
-
-    const StockTotal = 10;
+const Contador = ({inicio , stock, onAdd}) => {
+    const [contador, setContador] = useState(inicio);
 
     const Sumar = () => {
-        if( contador < StockTotal)
         setContador( contador +1);
     }
 
     const Restar = () => {
-        if (contador > 0 )
         setContador( contador -1);
     }
 
     return(
         <>
-        <span> Stock de un producto Hardcodeado: {StockTotal}</span>
-        {/* <span>{stock}</span> */}
             <div>
-                <button onClick={Restar}>-</button>
+                <Button variant="primary" disabled={contador <= 1} onClick={Restar}>-</Button>
                 <span>{'  ' +contador+'  '}</span>
-                <button onClick={Sumar}>+</button>
+                <Button variant="primary" disabled={contador >= stock} onClick={Sumar}>+</Button>
             </div>
-                <button>Agregar al carrito</button>
+                <Button variant="primary" disabled={contador <= 0 } onClick={() => onAdd(contador)}>Agregar al carrito</Button>
         </>
     );
 }

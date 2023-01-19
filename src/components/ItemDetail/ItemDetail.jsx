@@ -2,9 +2,13 @@ import Card from 'react-bootstrap/Card';
 import Contador from "../Contador/ItemCount";
 import './item.css'
 import { useState, } from 'react';
+import { Link } from 'react-router-dom';
 const ItemDetail = ({products}) => {
-    const [contador, setContador] = useState(0);
-
+    const [irCarrito , setIrCarrito] =useState(false)
+    const onAdd = (cantidad) => {
+        console.log(cantidad)
+        setIrCarrito(true)
+    }
         return (
             <div className='ItemRow'>
             <Card style={{ width: '25rem' }} className="Item">
@@ -16,7 +20,11 @@ const ItemDetail = ({products}) => {
                 <p>Precio: {products.precio} AR$</p>
                 <p>Stock: {products.stock}</p>
             </Card.Text>
-            <Contador contador={contador} setContador={setContador}/>
+            {
+                        irCarrito 
+                        ? <Link to="/cart">Finalizar Compra</Link>
+                        :<Contador inicio={0} stock={products.stock} onAdd={onAdd} />
+            }
         </Card.Body>
         </Card>
             </div>
