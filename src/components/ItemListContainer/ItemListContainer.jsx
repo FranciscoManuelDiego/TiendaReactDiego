@@ -7,23 +7,14 @@ const ItemListContainer = () => {
     const[products, setProducts]= useState([])
 
     const {categoria} = useParams();
-    useEffect(() =>{
-    getProducts
-    .then((resp)=> setProducts(resp))
-    if(categoria) {
-        const filtradoProductos = products.filter((product) => product.categoria === categoria);
-        setProducts(filtradoProductos)
-    } else {
-        getProducts.then((resp)=> setProducts(resp))
-    }
-    getProducts.catch((err) => console.log(err))
-}, [products, categoria])
-
-    // useEffect(() => {
-    // const filtradoProductos = products.filter((product) => product.categoria === categoria);
-    // setProducts(filtradoProductos)
-    // }, [products, categoria])
-
+    
+    useEffect(() => {
+        if(categoria) {
+            getProducts.then(res => setProducts(res.filter(producto => producto.categoria === categoria)))
+        } else {
+            getProducts.then(res => setProducts(res))
+        }
+    })
     return (
         <>
             <ItemList  producto={products}/>

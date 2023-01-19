@@ -4,6 +4,12 @@
     color: black;
 }
 
+.Item img {
+    width: 12rem;
+    height: 17rem;
+    object-fit: contain;
+}
+
 .Item li {
     text-decoration: none;
     list-style-type: none;

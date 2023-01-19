@@ -2,9 +2,9 @@ import Item from "../Item/Item";
 import './Items.css'
 const ItemList = ({producto}) => {
         return (
-        <ul key={producto.id}  className="Items" >
+        <ul className="Items" >
         {producto.map(producto => (
-                <Item producto={producto}/>
+                <Item key={producto.id} producto={producto}/>
         ))}
         </ul> 
         );

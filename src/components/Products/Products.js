@@ -2,7 +2,7 @@
 const Products = [{
     id: 1,
     marca: "Waterdog",
-    img: "./imgs/Termo Waterdog.webp", 
+    img: "https://http2.mlstatic.com/D_NQ_NP_616575-MLA42441364181_072020-O.webp", 
     categoria: "Termos",
     stock: 20,
     precio: 15000,
@@ -11,7 +11,7 @@ const Products = [{
     {
     id: 2,
     marca: "Stanley",
-    img: "./imgs/Termo Stanley.webp" , 
+    img: "https://http2.mlstatic.com/D_NQ_NP_823713-MLA46192402341_052021-O.webp" , 
     categoria: "Termos",
     stock: 30,
     precio: 30000,
@@ -20,7 +20,7 @@ const Products = [{
     {
     id: 3,
     marca: "Lumilagro", 
-    img: "./imgs/Termo Lumilagro.webp" , 
+    img: "https://http2.mlstatic.com/D_NQ_NP_934089-MLA42441068436_072020-O.webp" , 
     categoria: "Termos",
     stock: 15,
     precio: 7000,
@@ -29,7 +29,7 @@ const Products = [{
     {
     id: 4,
     marca: "Mate Térmico",
-    img: "./imgs/Mate Termico.webp", 
+    img: "https://http2.mlstatic.com/D_NQ_NP_785664-MLA50717702400_072022-O.webp", 
     categoria: "Mates",
     stock: 50,
     precio: 2500,
@@ -38,7 +38,7 @@ const Products = [{
     {
     id: 5, 
     marca: "Mate Calabaza",
-    img: "./imgs/Mate Calabaza.webp", 
+    img: "https://http2.mlstatic.com/D_NQ_NP_653088-MLA49823408533_052022-O.webp", 
     categoria: "Mates",
     stock: 70,
     precio: 2000,
@@ -47,7 +47,7 @@ const Products = [{
     {
     id: 6,
     marca: "Mate Camionero",
-    img: "./imgs/Mate Mate Camionero.webp" , 
+    img: "https://http2.mlstatic.com/D_NQ_NP_687546-MLA43870298631_102020-O.webp" , 
     categoria: "Mates",
     stock: 35,
     precio: 6000,
