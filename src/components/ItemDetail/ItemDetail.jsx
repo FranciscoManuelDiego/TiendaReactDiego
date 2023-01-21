@@ -3,12 +3,19 @@ import Contador from "../Contador/ItemCount";
 import './item.css'
 import { useState, } from 'react';
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../../context/CartProvider';
+
 const ItemDetail = ({products}) => {
     const [irCarrito , setIrCarrito] =useState(false)
+
+    const {agregarItem} = useCartContext();
+
     const onAdd = (cantidad) => {
-        console.log(cantidad)
+        // console.log(cantidad)
         setIrCarrito(true)
+        agregarItem(products, cantidad)
     }
+
         return (
             <div className='ItemRow'>
             <Card style={{ width: '25rem' }} className="Item">
