@@ -29,7 +29,7 @@ const ItemDetail = ({products}) => {
             </Card.Text>
             {
                         irCarrito 
-                        ? <Link to="/cart">Finalizar Compra</Link>
+                        ? <Link to="/cart">Ir al carrito</Link>
                         :<Contador inicio={0} stock={products.stock} onAdd={onAdd} />
             }
         </Card.Body>

@@ -18,11 +18,12 @@ const CartProvider = ({children}) => {
         setCart([...cart , nuevoProducto]);
     }
 
-    console.log ("Carrito", cart)
+    // console.log ("Carrito", cart)
 
     const LimpiarItems = () => setCart([]);
 
     const removerProducto = (id) => setCart(cart.filter(producto => producto.id !== id))
+    // console.log(removerProducto)
 
 return <CartContext.Provider value={{cart, agregarItem, LimpiarItems, removerProducto}}>{children}</CartContext.Provider>
 // Esta prop children lo que hace es enviar la app como un children para que se conozca el contexto y su info. en la App
