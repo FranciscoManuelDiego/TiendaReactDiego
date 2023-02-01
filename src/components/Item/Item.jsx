@@ -13,6 +13,7 @@ const Item = ({producto, img}) => {
             <img src={producto.img} alt={producto.marca}/>
             <li>Precio: {producto.precio} AR$</li>
             <li>Stock: {producto.stock}</li>
+            <li>{producto.descripcion}</li>
             <Link to={`/item/${producto.id}`} >
                 <Button variant="primary">Ver Más</Button>
             </Link>
