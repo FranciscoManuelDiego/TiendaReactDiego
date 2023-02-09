@@ -2,28 +2,58 @@ import React from 'react'
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { useState ,useEffect } from 'react';
-import { Button } from 'react-bootstrap';
-import CloseButton from 'react-bootstrap/CloseButton';
-import Alert from 'react-bootstrap/Alert';
-import Card from 'react-bootstrap/Card'
+import { Button, Form, CloseButton, Alert, Card } from 'react-bootstrap';
+import {getFirestore, 
+        collection,
+        addDoc,
+        // doc,
+        // updateDoc
+    } from "firebase/firestore";
 import "./cart.css"
+// import { clear } from '@testing-library/user-event/dist/clear';
 
-import "./cart.css"
 const Cart = () => {
     const [precioTotal, setPrecioTotal] = useState(0)
     const {cart, LimpiarItems, removerProducto} = useContext(CartContext)
+    const [order, setOrder] = useState({})
+    const [show, setShow] = useState(true);
+    const [formValue , setFormValue] = useState({
+        name: '',
+        mail: '',
+    })
     
+        useEffect(() =>{
+            setOrder({
+            comprador: {
+                name: 'x',
+                email: 'x',
+            },
+            items: cart.map((product) => { 
+                const {nombre, precio, id} = product
+                return {nombre, precio, id}
+            }),
+            precio: cart.reduce((previo, actual) => {
+                return previo + actual.precio * actual.cantidad }, 0)
+            });
+        }, [cart])
+
+
+    const handleInput = (event) => {
+        setFormValue({
+            ...formValue , 
+            [event.target.name] : event.target.value,
+            [event.target.mail] : event.target.value,
+        }) 
+    }
+    // Aqui obtengo la informacion de mi campo de datos
+
+    const database = getFirestore();
+    // const batch = writeBatch(database);
     useEffect(() => {
         setPrecioTotal(cart?.reduce((previo, actual) => {
             return previo + actual.precio * actual.cantidad
         }, 0))
     }, [cart])
-
-    const [show, setShow] = useState(true);
-
-    const Alerta = () => {
-        alert("Compraste tus productos!🤗")
-    }
 
         if(cart.length === 0 ) {
             if (show) {
@@ -42,6 +72,54 @@ const Cart = () => {
         // Yo al querer comparar esta condicion [] === [] serian dos array distintos. En esta propiedad length = 0 me dice que no hay ningun
         // objeto en el array.
         
+
+        // Aqui invoco mis datos del carrito junto con un effect
+
+        const crearOrden = (event) => {
+            // event.preventDefault()
+            const querySnapshot = collection (database , "ordenes");
+
+            const ordenActual = {
+                ...order,
+                comprador: formValue,
+            }
+            
+            addDoc(querySnapshot, ordenActual)
+            .then((response) =>{
+                alert("Orden creada!" + response.id)
+                // actualizarStock()
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        }
+        // Aqui creo la orden!
+
+        // const actualizarStock = () => {
+        //     cart.forEach((product)=> {
+        //         const querySnapshot = doc(database , "Products", product.id)
+        //         updateDoc(querySnapshot , {
+        //             stock: product.stock - product.cantidad
+        //         })
+        //         .then((res)=> {
+        //             console.log(res)
+        //             console.log("Se actualizo tu stock!")
+        //         })
+        //         .catch((err)=> console.log(err))
+        //     })
+            // cart.forEach((product) => {
+            //     const querySnapshot = doc(database, "Products", product.id);
+            //     batch.update(querySnapshot, {stock: product.stock - product.quantity});
+            //     batch.commit();
+            // })
+        //     clear()
+        // }
+
+        // Aqui hago la logica del descuento de stock!
+
+        const alertaCompra = () => {
+            alert("Compraste tus productos! 😁")
+        }
 return (
     <>
     {cart.map((producto) => (
@@ -59,9 +137,25 @@ return (
     </Card>
     ))}
         <div className='CartText'> 
+        <Form>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Nombre</Form.Label>
+            <Form.Control name="name" type="text" placeholder="Escribe tu Nombre" value={formValue.name} onChange={handleInput}/>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control name="mail" type="email" placeholder="Escribe tu Mail" value={formValue.mail} onChange={handleInput} />
+        </Form.Group>
+    {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Check me out" />
+    </Form.Group>
+    <Button variant="primary" type="submit">
+        Submit
+      </Button> */}
+        </Form>
             <p> Precio Total: {precioTotal}</p>
             <Button className='CartButtons' variant="primary" onClick={LimpiarItems}> Remover Productos</Button>
-            <Button className='CartButtons' variant="primary" onClick={() => {LimpiarItems(); Alerta()}}>Finalizar Compra</Button>
+            <Button className='CartButtons' variant="primary" onClick={() => {LimpiarItems(); alertaCompra(); crearOrden(); }}>Finalizar Compra</Button>
         </div>
     </>
 );
