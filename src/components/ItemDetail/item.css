@@ -1,16 +1,33 @@
-.ItemRow {
+/* .ItemRow {
         display: flex;
         background-color: #282c34;
         text-align: center;
         justify-content: center;
+} */
+
+.Item  {
+    margin: auto;
+    color: black;
+    text-align: center;
+}
+
+.Item img {
+    width: 20rem;
+    height: 20rem;
+    object-fit: contain;
 }
 
 .Item {
-    margin: 2%;
-    color: black;
-}
-
-.Item li {
     text-decoration: none;
     list-style-type: none;
+}
+
+@media (max-width: 700px) and (min-width:200px) {
+    .Item {
+        width:20rem;
+    }
+    .Item img {
+        width: 15rem;
+        height: 15rem;
+    }
 }

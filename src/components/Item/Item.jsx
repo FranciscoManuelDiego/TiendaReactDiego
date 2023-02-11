@@ -5,7 +5,7 @@ import './item.css'
 const Item = ({producto, img}) => {
     return (
         <div className='ItemRow'>
-        <Card style={{ width: '25rem' }} className="Item">
+        <Card className="Item">
         {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
     <Card.Body>
         <Card.Title><li>{producto.marca}</li> </Card.Title>

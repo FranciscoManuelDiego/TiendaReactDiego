@@ -17,8 +17,8 @@ const ItemDetail = ({products}) => {
     }
 
         return (
-            <div className='ItemRow'>
-            <Card style={{ width: '25rem' }} className="Item">
+            // <div className='ItemRow'>
+            <Card  className="Item">
             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
         <Card.Body>
             <Card.Title><span>{products.marca}</span> </Card.Title>
@@ -34,7 +34,7 @@ const ItemDetail = ({products}) => {
             }
         </Card.Body>
         </Card>
-            </div>
+            // </div>
         );
 }
 
