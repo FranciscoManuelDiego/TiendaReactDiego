@@ -123,7 +123,7 @@ const Cart = () => {
 return (
     <>
     {cart.map((producto) => (
-    <Card style={{ width: '30rem' }} className='cart' key={producto.id}>
+    <Card  className='cart' key={producto.id}>
     <Card.Body>
     <CloseButton className='CloseButton' onClick={() => removerProducto(producto.id)}/>
         <Card.Title> {producto.nombre}</Card.Title>
