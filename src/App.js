@@ -6,6 +6,7 @@ import ItemDetailContainer from './components/ItemDetailCointainer/ItemDetailCon
 import Cart from './components/Cart/Cart';
 import { BrowserRouter, Routes , Route } from 'react-router-dom';
 import CartProvider from './context/CartProvider';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/Item/:id' element={<ItemDetailContainer/>}></Route>
       </Routes>
     </CartProvider>
+      <Footer></Footer>
     </BrowserRouter>
     {/* <div className="App">
       <header className="App-header"> */}
