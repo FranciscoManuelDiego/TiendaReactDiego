@@ -9,7 +9,6 @@
     width: 30rem;
     margin: auto;
     color: black;
-
     text-align: center;
     align-items: center;
     margin: 2% auto;
@@ -33,5 +32,6 @@
     .Item img {
         width: 15rem;
         height: 15rem;
+        margin: auto;
     }
 }
