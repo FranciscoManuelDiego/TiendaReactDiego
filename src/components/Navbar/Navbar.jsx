@@ -14,8 +14,8 @@ const NavBar = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
             <Nav.Link as={Link} to="/cart" ><CartWidget ></CartWidget>Compras</Nav.Link>
-            <Nav.Link href="/categoria/Mates">Mates</Nav.Link>
-            <Nav.Link href="/categoria/Termos" > Termos</Nav.Link>
+            <Nav.Link  as={Link} to="/categoria/Mates">Mates</Nav.Link>
+            <Nav.Link  as={Link} to="/categoria/Termos" > Termos</Nav.Link>
             {/* <NavDropdown title="Otros Productos" id="collasible-nav-dropdown">
             <NavDropdown.Item href="#">
                 Yerba

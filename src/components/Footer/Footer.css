@@ -1,0 +1,49 @@
+
+.Footer {
+    text-align: center;
+    background-color: rgb(33,37,41);
+    color: white;
+    margin-top:2%;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.SectionIcons i {
+    margin-top: 0.50rem;
+    font-size:1.50rem;
+    padding: 0.70rem;
+    margin: 0.40rem;
+    color: rgb(33,37,41);
+}
+
+.circle-icon {
+    background: white;
+    padding:30px;
+    border-radius: 50%;
+}
+
+.SectionText {
+    font-size: 1.20rem;
+    padding: 0.10rem;
+}
+
+.Coder {
+    color: rgba(221, 220, 220, 0.799);
+}
+
+.SectionText :is(a){
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (max-width: 700px) and (min-width:200px) {
+    .SectionIcons i {
+        font-size:1.20rem;
+    }
+
+    .SectionText {
+        font-size: 1rem;
+        padding: 0.10rem;
+    }
+}
